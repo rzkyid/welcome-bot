@@ -48,19 +48,14 @@ function addTextWithShadow(ctx, text, font, color, x, y) {
 async function drawProfilePicture(ctx, user, x, y, size) {
   try {
     // Get avatar URL and ensure it's in PNG format
-    let avatarURL = user.displayAvatarURL({ size: 128 });
+    let avatarURL = user.displayAvatarURL({ size: 128, extension: 'png' });
 
-    // If the avatar is in .webp format, replace it with .png
-    if (avatarURL.endsWith('.webp')) {
-      avatarURL = avatarURL.replace('.webp', '.png');
-    }
-
-    console.log(`Attempting to load avatar from URL: ${avatarURL}`); // Log the URL being used
+    // Debugging log: Show the final avatar URL
+    console.log(`Attempting to load avatar from URL: ${avatarURL}`);
 
     // Load the avatar image
     const avatar = await loadImage(avatarURL);
-    
-    console.log('Avatar loaded successfully'); // Log when the avatar is loaded successfully
+    console.log('Avatar loaded successfully');
 
     // Create a circular clipping path
     ctx.beginPath();
