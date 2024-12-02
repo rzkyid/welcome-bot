@@ -55,9 +55,9 @@ client.on('guildMemberAdd', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  const fontMain = '70px "Impact"'; // Bold and thick font
-  const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
-  const fontTertiary = '50px "Impact"'; // Same size for tertiary text
+  const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
+  const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
+  const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
@@ -85,9 +85,9 @@ client.on('guildMemberRemove', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  const fontMain = '70px "Impact"'; // Bold and thick font
-  const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
-  const fontTertiary = '50px "Impact"'; // Same size for tertiary text
+  const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
+  const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
+  const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
@@ -117,9 +117,9 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    const fontMain = '70px "Impact"'; // Bold and thick font
-    const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
-    const fontTertiary = '50px "Impact"'; // Same size for tertiary text
+    const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
+    const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
+    const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
@@ -147,9 +147,9 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    const fontMain = '70px "Impact"'; // Bold and thick font
-    const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
-    const fontTertiary = '50px "Impact"'; // Same size for tertiary text
+    const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
+    const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
+    const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
