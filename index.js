@@ -38,6 +38,21 @@ client.on('guildMemberAdd', async (member) => {
   const backgroundImage = await loadImage(welcomeImageUrl);
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Gambar background ke canvas
 
+  // Muat foto profil member dan tampilkan dalam bentuk lingkaran
+  const profileImage = await loadImage(member.user.displayAvatarURL({ format: 'png', size: 128 }));
+  const circleX = 100; // Posisi X untuk lingkaran
+  const circleY = 50;  // Posisi Y untuk lingkaran
+  const circleRadius = 50; // Radius lingkaran
+
+  // Gambar lingkaran untuk profil
+  ctx.beginPath();
+  ctx.arc(circleX, circleY, circleRadius, 0, Math.PI * 2);
+  ctx.closePath();
+  ctx.clip(); // Masking untuk lingkaran
+
+  // Menambahkan gambar profil member dalam lingkaran
+  ctx.drawImage(profileImage, circleX - circleRadius, circleY - circleRadius, circleRadius * 2, circleRadius * 2);
+
   // Menambahkan teks "Welcome"
   ctx.font = 'bold 40px "Arial Black", sans-serif'; // Font tebal
   ctx.fillStyle = '#FFFFFF'; // Warna teks "Welcome"
@@ -108,6 +123,21 @@ client.on('messageCreate', async (message) => {
     // Muat gambar background
     const backgroundImage = await loadImage(welcomeImageUrl);
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Gambar background ke canvas
+
+    // Muat foto profil bot dan tampilkan dalam bentuk lingkaran
+    const profileImage = await loadImage(client.user.displayAvatarURL({ format: 'png', size: 128 }));
+    const circleX = 100; // Posisi X untuk lingkaran
+    const circleY = 50;  // Posisi Y untuk lingkaran
+    const circleRadius = 50; // Radius lingkaran
+
+    // Gambar lingkaran untuk profil
+    ctx.beginPath();
+    ctx.arc(circleX, circleY, circleRadius, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.clip(); // Masking untuk lingkaran
+
+    // Menambahkan gambar profil bot dalam lingkaran
+    ctx.drawImage(profileImage, circleX - circleRadius, circleY - circleRadius, circleRadius * 2, circleRadius * 2);
 
     // Menambahkan teks "Welcome"
     ctx.font = 'bold 40px "Arial Black", sans-serif'; // Font tebal
