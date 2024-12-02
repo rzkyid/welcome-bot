@@ -12,12 +12,12 @@ const client = new Client({
 
 // Mengakses variabel lingkungan dari .env
 const token = process.env.DISCORD_BOT_TOKEN;
-const welcomeImageUrl = process.env.WELCOME_IMAGE_URL;
-const goodbyeImageUrl = process.env.GOODBYE_IMAGE_URL;
+const welcomeImageUrl = 'https://i.imgur.com/ht3HiAG.jpeg';
+const goodbyeImageUrl = 'https://i.imgur.com/ht3HiAG.jpeg';
 
 // Tentukan channel ID untuk welcome dan goodbye (gunakan ID channel sesuai yang Anda inginkan)
-const welcomeChannelId = 'YOUR_CHANNEL_ID_FOR_WELCOME';  // Ganti dengan ID channel untuk welcome
-const goodbyeChannelId = 'YOUR_CHANNEL_ID_FOR_GOODBYE';  // Ganti dengan ID channel untuk goodbye
+const welcomeChannelId = '1313095157477802034';  // Ganti dengan ID channel untuk welcome
+const goodbyeChannelId = '1313095157477802034';  // Ganti dengan ID channel untuk goodbye
 
 // Ketika bot siap
 client.once('ready', () => {
