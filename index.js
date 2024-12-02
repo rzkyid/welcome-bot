@@ -37,18 +37,22 @@ client.on('guildMemberAdd', async (member) => {
   const background = await loadImage(WELCOME_IMAGE_URL);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
+  // Set text style (bold and centered)
+  ctx.textAlign = 'center'; // Align text to the center
+  ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+
   // Text styling for Welcome
-  ctx.font = '50px Arial';
+  ctx.font = '60px bold Arial'; // Bold and larger font
   ctx.fillStyle = 'white';
-  ctx.fillText('Welcome!', 220, 60); // Position for 'Welcome' text
+  ctx.fillText('Welcome!', canvas.width / 2, 60); // Centered 'Welcome' text
 
-  ctx.font = '40px Arial';
+  ctx.font = '50px bold Arial'; // Bold font
   ctx.fillStyle = 'yellow';
-  ctx.fillText(member.user.username, 220, 120); // Position for username text
+  ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
 
-  ctx.font = '30px Arial';
+  ctx.font = '40px bold Arial'; // Bold font
   ctx.fillStyle = 'white';
-  ctx.fillText('Semoga betah disini!', 220, 180); // Position for "Semoga betah disini!" text
+  ctx.fillText('Semoga betah disini!', canvas.width / 2, 180); // Centered "Semoga betah disini!" text
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -70,18 +74,22 @@ client.on('guildMemberRemove', async (member) => {
   const background = await loadImage(WELCOME_IMAGE_URL);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
+  // Set text style (bold and centered)
+  ctx.textAlign = 'center'; // Align text to the center
+  ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+
   // Text styling for Goodbye
-  ctx.font = '50px Arial';
+  ctx.font = '60px bold Arial'; // Bold and larger font
   ctx.fillStyle = 'white';
-  ctx.fillText('Goodbye!', 220, 60); // Position for 'Goodbye' text
+  ctx.fillText('Goodbye!', canvas.width / 2, 60); // Centered 'Goodbye' text
 
-  ctx.font = '40px Arial';
+  ctx.font = '50px bold Arial'; // Bold font
   ctx.fillStyle = 'yellow';
-  ctx.fillText(member.user.username, 220, 120); // Position for username text
+  ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
 
-  ctx.font = '30px Arial';
+  ctx.font = '40px bold Arial'; // Bold font
   ctx.fillStyle = 'white';
-  ctx.fillText('Semoga sukses!', 220, 180); // Position for "Semoga sukses!" text
+  ctx.fillText('Semoga sukses!', canvas.width / 2, 180); // Centered "Semoga sukses!" text
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
@@ -105,18 +113,22 @@ client.on('messageCreate', async (message) => {
     const background = await loadImage(WELCOME_IMAGE_URL);
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
+    // Set text style (bold and centered)
+    ctx.textAlign = 'center'; // Align text to the center
+    ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+
     // Text styling for Welcome
-    ctx.font = '50px Arial';
+    ctx.font = '60px bold Arial'; // Bold and larger font
     ctx.fillStyle = 'white';
-    ctx.fillText('Welcome!', 220, 60); // Position for 'Welcome' text
+    ctx.fillText('Welcome!', canvas.width / 2, 60); // Centered 'Welcome' text
 
-    ctx.font = '40px Arial';
+    ctx.font = '50px bold Arial'; // Bold font
     ctx.fillStyle = 'yellow';
-    ctx.fillText(member.user.username, 220, 120); // Position for username text
+    ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
 
-    ctx.font = '30px Arial';
+    ctx.font = '40px bold Arial'; // Bold font
     ctx.fillStyle = 'white';
-    ctx.fillText('Semoga betah disini!', 220, 180); // Position for "Semoga betah disini!" text
+    ctx.fillText('Semoga betah disini!', canvas.width / 2, 180); // Centered "Semoga betah disini!" text
 
     // Send the image to the channel
     message.channel.send({
@@ -138,18 +150,22 @@ client.on('messageCreate', async (message) => {
     const background = await loadImage(WELCOME_IMAGE_URL);
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
+    // Set text style (bold and centered)
+    ctx.textAlign = 'center'; // Align text to the center
+    ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+
     // Text styling for Goodbye
-    ctx.font = '50px Arial';
+    ctx.font = '60px bold Arial'; // Bold and larger font
     ctx.fillStyle = 'white';
-    ctx.fillText('Goodbye!', 220, 60); // Position for 'Goodbye' text
+    ctx.fillText('Goodbye!', canvas.width / 2, 60); // Centered 'Goodbye' text
 
-    ctx.font = '40px Arial';
+    ctx.font = '50px bold Arial'; // Bold font
     ctx.fillStyle = 'yellow';
-    ctx.fillText(member.user.username, 220, 120); // Position for username text
+    ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
 
-    ctx.font = '30px Arial';
+    ctx.font = '40px bold Arial'; // Bold font
     ctx.fillStyle = 'white';
-    ctx.fillText('Semoga sukses!', 220, 180); // Position for "Semoga sukses!" text
+    ctx.fillText('Semoga sukses!', canvas.width / 2, 180); // Centered "Semoga sukses!" text
 
     // Send the image to the channel
     message.channel.send({
