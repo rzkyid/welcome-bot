@@ -37,7 +37,7 @@ client.on('guildMemberAdd', async (member) => {
   const background = await loadImage(WELCOME_IMAGE_URL);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  // Load profile picture
+  // Load profile picture (crop to circle)
   const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
   ctx.beginPath();
   ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
@@ -47,15 +47,15 @@ client.on('guildMemberAdd', async (member) => {
   // Text styling for Welcome
   ctx.font = '50px Arial';
   ctx.fillStyle = 'white';
-  ctx.fillText('Welcome!', 220, 60);
+  ctx.fillText('Welcome!', 220, 60); // Position for 'Welcome' text
 
   ctx.font = '40px Arial';
   ctx.fillStyle = 'yellow';
-  ctx.fillText(member.user.username, 220, 120);
+  ctx.fillText(member.user.username, 220, 120); // Position for username text
 
   ctx.font = '30px Arial';
   ctx.fillStyle = 'white';
-  ctx.fillText('Semoga betah disini!', 220, 180);
+  ctx.fillText('Semoga betah disini!', 220, 180); // Position for "Semoga betah disini!" text
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -77,7 +77,7 @@ client.on('guildMemberRemove', async (member) => {
   const background = await loadImage(WELCOME_IMAGE_URL);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  // Load profile picture
+  // Load profile picture (crop to circle)
   const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
   ctx.beginPath();
   ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
@@ -87,15 +87,15 @@ client.on('guildMemberRemove', async (member) => {
   // Text styling for Goodbye
   ctx.font = '50px Arial';
   ctx.fillStyle = 'white';
-  ctx.fillText('Goodbye!', 220, 60);
+  ctx.fillText('Goodbye!', 220, 60); // Position for 'Goodbye' text
 
   ctx.font = '40px Arial';
   ctx.fillStyle = 'yellow';
-  ctx.fillText(member.user.username, 220, 120);
+  ctx.fillText(member.user.username, 220, 120); // Position for username text
 
   ctx.font = '30px Arial';
   ctx.fillStyle = 'white';
-  ctx.fillText('Semoga sukses!', 220, 180);
+  ctx.fillText('Semoga sukses!', 220, 180); // Position for "Semoga sukses!" text
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
@@ -119,7 +119,7 @@ client.on('messageCreate', async (message) => {
     const background = await loadImage(WELCOME_IMAGE_URL);
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    // Load profile picture
+    // Load profile picture (crop to circle)
     const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
     ctx.beginPath();
     ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
@@ -129,15 +129,15 @@ client.on('messageCreate', async (message) => {
     // Text styling for Welcome
     ctx.font = '50px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText('Welcome!', 220, 60);
+    ctx.fillText('Welcome!', 220, 60); // Position for 'Welcome' text
 
     ctx.font = '40px Arial';
     ctx.fillStyle = 'yellow';
-    ctx.fillText(member.user.username, 220, 120);
+    ctx.fillText(member.user.username, 220, 120); // Position for username text
 
     ctx.font = '30px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText('Semoga betah disini!', 220, 180);
+    ctx.fillText('Semoga betah disini!', 220, 180); // Position for "Semoga betah disini!" text
 
     // Send the image to the channel
     message.channel.send({
@@ -159,7 +159,7 @@ client.on('messageCreate', async (message) => {
     const background = await loadImage(WELCOME_IMAGE_URL);
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    // Load profile picture
+    // Load profile picture (crop to circle)
     const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
     ctx.beginPath();
     ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
@@ -169,15 +169,15 @@ client.on('messageCreate', async (message) => {
     // Text styling for Goodbye
     ctx.font = '50px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText('Goodbye!', 220, 60);
+    ctx.fillText('Goodbye!', 220, 60); // Position for 'Goodbye' text
 
     ctx.font = '40px Arial';
     ctx.fillStyle = 'yellow';
-    ctx.fillText(member.user.username, 220, 120);
+    ctx.fillText(member.user.username, 220, 120); // Position for username text
 
     ctx.font = '30px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText('Semoga sukses!', 220, 180);
+    ctx.fillText('Semoga sukses!', 220, 180); // Position for "Semoga sukses!" text
 
     // Send the image to the channel
     message.channel.send({
@@ -188,7 +188,7 @@ client.on('messageCreate', async (message) => {
 });
 
 // Login ke Discord menggunakan token dari .env
-client.login(process.env.DISCORD_BOT_TOKEN);
+client.login(process.env.DISCORD_TOKEN);
 
 // Setup Express server (Optional, untuk menjalankan server Express)
 app.listen(port, () => {
