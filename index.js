@@ -1,157 +1,196 @@
+require('dotenv').config(); // Memuat konfigurasi dari .env
 const { Client, GatewayIntentBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const express = require('express');
-require('dotenv').config();
-
-const app = express();
-const port = process.env.PORT || 3000;  // Menentukan port, atau 3000 jika tidak ada di .env
 
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMembers,
-  ]
+  ],
 });
 
-const token = process.env.DISCORD_BOT_TOKEN;
-const welcomeImageUrl = 'https://i.imgur.com/ht3HiAG.jpeg'; // Gambar untuk welcome dan goodbye
-const welcomeChannelId = '1313095157477802034';  // Ganti dengan ID channel untuk welcome
-const goodbyeChannelId = '1313095157477802034';  // Ganti dengan ID channel untuk goodbye
+const app = express();
+const port = process.env.PORT || 3000; // Menggunakan PORT dari .env atau 3000 sebagai default
 
-// Fungsi untuk mengirim gambar welcome
-async function sendWelcomeImage(message) {
-  const member = message.mentions.members.first();
+const WELCOME_IMAGE_URL = 'https://i.imgur.com/ht3HiAG.jpeg';
+const WELCOME_CHANNEL_ID = '1313095157477802034';
+const GOODBYE_CHANNEL_ID = '1313095157477802034';
 
-  if (!member) return;
+// Bot login
+client.once('ready', () => {
+  console.log('Bot is online!');
+});
 
+// Welcome image when a new member joins
+client.on('guildMemberAdd', async (member) => {
+  const welcomeChannel = member.guild.channels.cache.get(WELCOME_CHANNEL_ID);
+  if (!welcomeChannel) return;
+
+  // Create welcome image
   const canvas = createCanvas(700, 250);
   const ctx = canvas.getContext('2d');
 
-  // Muat gambar background
-  const backgroundImage = await loadImage(welcomeImageUrl);
-  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Gambar background ke canvas
+  // Load background image
+  const background = await loadImage(WELCOME_IMAGE_URL);
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  // Muat foto profil member dan tampilkan dalam bentuk lingkaran
-  const profileImage = await loadImage(member.user.displayAvatarURL({ format: 'png', size: 128 }));
-  const circleX = 100; // Posisi X untuk lingkaran
-  const circleY = 50;  // Posisi Y untuk lingkaran
-  const circleRadius = 50; // Radius lingkaran
-
-  // Gambar lingkaran untuk profil
+  // Load profile picture
+  const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
   ctx.beginPath();
-  ctx.arc(circleX, circleY, circleRadius, 0, Math.PI * 2);
-  ctx.closePath();
-  ctx.clip(); // Masking untuk lingkaran
+  ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
+  ctx.clip();
+  ctx.drawImage(avatar, 20, 20, 140, 140);
 
-  // Menambahkan gambar profil member dalam lingkaran
-  ctx.drawImage(profileImage, circleX - circleRadius, circleY - circleRadius, circleRadius * 2, circleRadius * 2);
+  // Text styling for Welcome
+  ctx.font = '50px Arial';
+  ctx.fillStyle = 'white';
+  ctx.fillText('Welcome!', 220, 60);
 
-  // Menambahkan teks "Welcome" (ukuran terbesar)
-  ctx.font = 'bold 60px "Arial Black", sans-serif'; // Font tebal
-  ctx.fillStyle = '#FFFFFF'; // Warna teks "Welcome"
-  ctx.textAlign = 'center';
-  ctx.fillText('Welcome', canvas.width / 2, 60);
+  ctx.font = '40px Arial';
+  ctx.fillStyle = 'yellow';
+  ctx.fillText(member.user.username, 220, 120);
 
-  // Menambahkan teks username member (lebih kecil)
-  ctx.font = 'bold 50px "Arial Black", sans-serif'; // Font tebal
-  ctx.fillStyle = '#FFD700'; // Warna teks untuk username
-  ctx.fillText(member.user.username, canvas.width / 2, 120);
+  ctx.font = '30px Arial';
+  ctx.fillStyle = 'white';
+  ctx.fillText('Semoga betah disini!', 220, 180);
 
-  // Menambahkan teks "Semoga betah disini!" (sama seperti teks kedua)
-  ctx.font = 'bold 50px "Arial Black", sans-serif'; // Font tebal
-  ctx.fillStyle = '#FFFFFF'; // Warna teks "Semoga betah disini!"
-  ctx.fillText('Semoga betah disini!', canvas.width / 2, 180);
+  // Send the image to the welcome channel
+  welcomeChannel.send({
+    content: `<@${member.id}>`,
+    files: [{ attachment: canvas.toBuffer(), name: 'welcome-image.png' }],
+  });
+});
 
-  // Mengonversi canvas menjadi buffer
-  const buffer = canvas.toBuffer();
+// Goodbye image when a member leaves
+client.on('guildMemberRemove', async (member) => {
+  const goodbyeChannel = member.guild.channels.cache.get(GOODBYE_CHANNEL_ID);
+  if (!goodbyeChannel) return;
 
-  // Kirim pesan ke channel dengan gambar dan teks
-  const attachment = {
-    files: [{
-      attachment: buffer,
-      name: 'welcome-image.png',
-    }]
-  };
-
-  // Kirim gambar welcome ke channel
-  message.channel.send({ content: `Selamat datang ${member}`, files: attachment.files });
-}
-
-// Fitur slgoodbye untuk melihat hasil goodbye tanpa menunggu member keluar
-async function sendGoodbyeImage(message) {
-  const member = message.mentions.members.first();
-
-  if (!member) return;
-
+  // Create goodbye image
   const canvas = createCanvas(700, 250);
   const ctx = canvas.getContext('2d');
 
-  // Muat gambar background
-  const backgroundImage = await loadImage(welcomeImageUrl);
-  ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Gambar background ke canvas
+  // Load background image
+  const background = await loadImage(WELCOME_IMAGE_URL);
+  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  // Muat foto profil member dan tampilkan dalam bentuk lingkaran
-  const profileImage = await loadImage(member.user.displayAvatarURL({ format: 'png', size: 128 }));
-  const circleX = 100; // Posisi X untuk lingkaran
-  const circleY = 50;  // Posisi Y untuk lingkaran
-  const circleRadius = 50; // Radius lingkaran
-
-  // Gambar lingkaran untuk profil
+  // Load profile picture
+  const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
   ctx.beginPath();
-  ctx.arc(circleX, circleY, circleRadius, 0, Math.PI * 2);
-  ctx.closePath();
-  ctx.clip(); // Masking untuk lingkaran
+  ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
+  ctx.clip();
+  ctx.drawImage(avatar, 20, 20, 140, 140);
 
-  // Menambahkan gambar profil member dalam lingkaran
-  ctx.drawImage(profileImage, circleX - circleRadius, circleY - circleRadius, circleRadius * 2, circleRadius * 2);
+  // Text styling for Goodbye
+  ctx.font = '50px Arial';
+  ctx.fillStyle = 'white';
+  ctx.fillText('Goodbye!', 220, 60);
 
-  // Menambahkan teks "Goodbye" (ukuran terbesar)
-  ctx.font = 'bold 60px "Arial Black", sans-serif'; // Font tebal
-  ctx.fillStyle = '#FFFFFF'; // Warna teks "Goodbye"
-  ctx.textAlign = 'center';
-  ctx.fillText('Goodbye', canvas.width / 2, 60);
+  ctx.font = '40px Arial';
+  ctx.fillStyle = 'yellow';
+  ctx.fillText(member.user.username, 220, 120);
 
-  // Menambahkan teks username member (lebih kecil)
-  ctx.font = 'bold 50px "Arial Black", sans-serif'; // Font tebal
-  ctx.fillStyle = '#FFD700'; // Warna teks untuk username
-  ctx.fillText(member.user.username, canvas.width / 2, 120);
+  ctx.font = '30px Arial';
+  ctx.fillStyle = 'white';
+  ctx.fillText('Semoga sukses!', 220, 180);
 
-  // Menambahkan teks "Semoga sukses selalu!" (sama seperti teks kedua)
-  ctx.font = 'bold 50px "Arial Black", sans-serif'; // Font tebal
-  ctx.fillStyle = '#FFFFFF'; // Warna teks "Semoga sukses selalu!"
-  ctx.fillText('Semoga sukses selalu!', canvas.width / 2, 180);
+  // Send the image to the goodbye channel
+  goodbyeChannel.send({
+    content: `<@${member.id}>`,
+    files: [{ attachment: canvas.toBuffer(), name: 'goodbye-image.png' }],
+  });
+});
 
-  // Mengonversi canvas menjadi buffer
-  const buffer = canvas.toBuffer();
-
-  // Kirim pesan goodbye ke channel
-  message.channel.send({ content: `Selamat tinggal ${member}`, files: attachment.files });
-}
-
-// Event handler untuk bot
+// Command to trigger welcome image manually
 client.on('messageCreate', async (message) => {
   if (message.content.toLowerCase() === '!slwelcome') {
-    // Hanya admin yang bisa menggunakan perintah ini
     if (!message.member.permissions.has('ADMINISTRATOR')) return;
-    sendWelcomeImage(message);
+
+    const member = message.member;
+
+    // Create welcome image
+    const canvas = createCanvas(700, 250);
+    const ctx = canvas.getContext('2d');
+
+    // Load background image
+    const background = await loadImage(WELCOME_IMAGE_URL);
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+    // Load profile picture
+    const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
+    ctx.beginPath();
+    ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
+    ctx.clip();
+    ctx.drawImage(avatar, 20, 20, 140, 140);
+
+    // Text styling for Welcome
+    ctx.font = '50px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Welcome!', 220, 60);
+
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'yellow';
+    ctx.fillText(member.user.username, 220, 120);
+
+    ctx.font = '30px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Semoga betah disini!', 220, 180);
+
+    // Send the image to the channel
+    message.channel.send({
+      content: `<@${member.id}>`,
+      files: [{ attachment: canvas.toBuffer(), name: 'welcome-image.png' }],
+    });
   }
 
   if (message.content.toLowerCase() === '!slgoodbye') {
-    // Hanya admin yang bisa menggunakan perintah ini
     if (!message.member.permissions.has('ADMINISTRATOR')) return;
-    sendGoodbyeImage(message);
+
+    const member = message.member;
+
+    // Create goodbye image
+    const canvas = createCanvas(700, 250);
+    const ctx = canvas.getContext('2d');
+
+    // Load background image
+    const background = await loadImage(WELCOME_IMAGE_URL);
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+    // Load profile picture
+    const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
+    ctx.beginPath();
+    ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
+    ctx.clip();
+    ctx.drawImage(avatar, 20, 20, 140, 140);
+
+    // Text styling for Goodbye
+    ctx.font = '50px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Goodbye!', 220, 60);
+
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'yellow';
+    ctx.fillText(member.user.username, 220, 120);
+
+    ctx.font = '30px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Semoga sukses!', 220, 180);
+
+    // Send the image to the channel
+    message.channel.send({
+      content: `<@${member.id}>`,
+      files: [{ attachment: canvas.toBuffer(), name: 'goodbye-image.png' }],
+    });
   }
 });
 
-// Login bot dengan token
-client.login(token);
+// Login ke Discord menggunakan token dari .env
+client.login(process.env.DISCORD_BOT_TOKEN);
 
-// Mulai server Express pada port yang ditentukan
-app.get('/', (req, res) => {
-  res.send('Bot Discord sedang berjalan.');
-});
-
+// Setup Express server (Optional, untuk menjalankan server Express)
 app.listen(port, () => {
   console.log(`Server berjalan di port ${port}`);
 });
