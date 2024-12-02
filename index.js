@@ -49,7 +49,11 @@ async function drawProfilePicture(ctx, user, x, y, size) {
   try {
     // Force PNG format by adding `?format=png` in URL
     const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
-    const avatar = await loadImage(avatarURL); // Load avatar image
+    console.log(`Attempting to load avatar from URL: ${avatarURL}`); // Log the URL being used
+
+    // Load avatar image
+    const avatar = await loadImage(avatarURL);
+    console.log('Avatar loaded successfully'); // Log when the avatar is loaded successfully
 
     // Create a circular clipping path
     ctx.beginPath();
