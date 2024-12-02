@@ -63,9 +63,9 @@ client.on('guildMemberAdd', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 140); // Teks pertama, posisi y = 140
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 180); // Teks kedua, posisi y = 180
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 220); // Teks ketiga, posisi y = 220
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -93,9 +93,9 @@ client.on('guildMemberRemove', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 140); // Teks pertama, posisi y = 140
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 180); // Teks kedua, posisi y = 180
-  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 220); // Teks ketiga, posisi y = 220
+  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
+  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
@@ -125,7 +125,7 @@ client.on('messageCreate', async (message) => {
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
     // Add text to canvas with shadow
-    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 166); // Teks pertama, posisi y = 140
+    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
     addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
     addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
 
@@ -155,9 +155,9 @@ client.on('messageCreate', async (message) => {
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
     // Add text to canvas with shadow
-    addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 140); // Teks pertama, posisi y = 140
-    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 180); // Teks kedua, posisi y = 180
-    addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 220); // Teks ketiga, posisi y = 220
+    addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
+    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
+    addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
 
     // Send the image to the channel
     message.channel.send({
