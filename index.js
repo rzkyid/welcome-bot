@@ -1,7 +1,10 @@
 require('dotenv').config(); // Memuat konfigurasi dari .env
 const { Client, GatewayIntentBits } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { createCanvas, loadImage, registerFont } = require('canvas');
 const express = require('express');
+
+// Daftarkan font Bebas Neue
+registerFont('path/to/BebasNeue-Regular.ttf', { family: 'Bebas Neue' });
 
 const client = new Client({
   intents: [
@@ -55,9 +58,9 @@ client.on('guildMemberAdd', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
-  const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
-  const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
+  const fontMain = '50px "Bebas Neue"'; // Font Bebas Neue, ukuran 50px
+  const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
+  const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
@@ -85,9 +88,9 @@ client.on('guildMemberRemove', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
-  const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
-  const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
+  const fontMain = '50px "Bebas Neue"'; // Font Bebas Neue, ukuran 50px
+  const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
+  const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
@@ -117,9 +120,9 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
-    const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
-    const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
+    const fontMain = '50px "Bebas Neue"'; // Font Bebas Neue, ukuran 50px
+    const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
+    const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
@@ -147,9 +150,9 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
-    const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
-    const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
+    const fontMain = '50px "Bebas Neue"'; // Font Bebas Neue, ukuran 50px
+    const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
+    const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
