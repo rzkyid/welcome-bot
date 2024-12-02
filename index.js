@@ -88,10 +88,15 @@ client.on('guildMemberAdd', async (member) => {
   const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
-  // Draw profile picture in the center above the text
-  await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
+  // Position for profile picture (centered)
+  const profilePicX = canvas.width / 2;
+  const profilePicY = 100;
+  const profilePicSize = 100;
 
-  // Add text to canvas with shadow
+  // Draw profile picture in the center above the text
+  await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
+
+  // Add text to canvas with shadow (make sure the text is below the image)
   addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
   addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
@@ -121,10 +126,15 @@ client.on('guildMemberRemove', async (member) => {
   const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
-  // Draw profile picture in the center above the text
-  await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
+  // Position for profile picture (centered)
+  const profilePicX = canvas.width / 2;
+  const profilePicY = 100;
+  const profilePicSize = 100;
 
-  // Add text to canvas with shadow
+  // Draw profile picture in the center above the text
+  await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
+
+  // Add text to canvas with shadow (make sure the text is below the image)
   addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
   addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
@@ -156,10 +166,15 @@ client.on('messageCreate', async (message) => {
     const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
-    // Draw profile picture in the center above the text
-    await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
+    // Position for profile picture (centered)
+    const profilePicX = canvas.width / 2;
+    const profilePicY = 100;
+    const profilePicSize = 100;
 
-    // Add text to canvas with shadow
+    // Draw profile picture in the center above the text
+    await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
+
+    // Add text to canvas with shadow (make sure the text is below the image)
     addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
     addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
     addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
