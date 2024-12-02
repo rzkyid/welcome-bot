@@ -65,7 +65,7 @@ client.on('guildMemberAdd', async (member) => {
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 170); // Sesuaikan y posisi
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 200); // Sesuaikan y posisi
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 1, 500); // Sesuaikan y posisi
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 1, 3000); // Sesuaikan y posisi
 
   // Send the image to the welcome channel
   welcomeChannel.send({
