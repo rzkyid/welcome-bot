@@ -1,6 +1,10 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
+const express = require('express');
 require('dotenv').config();
+
+const app = express();
+const port = process.env.PORT || 3000;  // Menentukan port, atau 3000 jika tidak ada di .env
 
 const client = new Client({
   intents: [
@@ -142,3 +146,12 @@ client.on('messageCreate', async (message) => {
 
 // Login bot dengan token
 client.login(token);
+
+// Mulai server Express pada port yang ditentukan
+app.get('/', (req, res) => {
+  res.send('Bot Discord sedang berjalan.');
+});
+
+app.listen(port, () => {
+  console.log(`Server berjalan di port ${port}`);
+});
