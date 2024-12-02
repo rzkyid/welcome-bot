@@ -46,17 +46,21 @@ function addTextWithShadow(ctx, text, font, color, x, y) {
 
 // Function to draw profile picture in a circle
 async function drawProfilePicture(ctx, user, x, y, size) {
-  const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
-  const avatar = await loadImage(avatarURL);
+  try {
+    const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+    const avatar = await loadImage(avatarURL); // Load avatar image
 
-  // Draw circle
-  ctx.beginPath();
-  ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-  ctx.closePath();
-  ctx.clip(); // Crop the image to a circle
+    // Draw a circular clipping region
+    ctx.beginPath();
+    ctx.arc(x, y, size / 2, 0, Math.PI * 2);  // Draw circle at (x, y) with radius size/2
+    ctx.closePath();
+    ctx.clip();  // Clip to circle
 
-  // Draw the profile picture
-  ctx.drawImage(avatar, x - size / 2, y - size / 2, size, size);
+    // Draw the profile picture inside the circle
+    ctx.drawImage(avatar, x - size / 2, y - size / 2, size, size); // Draw image at the center of the circle
+  } catch (error) {
+    console.error('Error loading avatar:', error);
+  }
 }
 
 // Welcome image when a new member joins
