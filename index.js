@@ -1,6 +1,6 @@
 require('dotenv').config(); // Memuat konfigurasi dari .env
 const { Client, GatewayIntentBits } = require('discord.js');
-const { createCanvas, loadImage, registerFont } = require('canvas');
+const { createCanvas, registerFont, loadImage } = require('canvas');
 const express = require('express');
 
 // Daftarkan font Bebas Neue
@@ -47,12 +47,19 @@ function addTextWithShadow(ctx, text, font, color, x, y) {
 // Function to draw profile picture in a circle
 async function drawProfilePicture(ctx, user, x, y, size) {
   try {
-    // Force PNG format by adding ?format=png to the URL
-    const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
+    // Get avatar URL and ensure it's in PNG format
+    let avatarURL = user.displayAvatarURL({ size: 128 });
+
+    // If the avatar is in .webp format, replace it with .png
+    if (avatarURL.endsWith('.webp')) {
+      avatarURL = avatarURL.replace('.webp', '.png');
+    }
+
     console.log(`Attempting to load avatar from URL: ${avatarURL}`); // Log the URL being used
 
-    // Load avatar image
+    // Load the avatar image
     const avatar = await loadImage(avatarURL);
+    
     console.log('Avatar loaded successfully'); // Log when the avatar is loaded successfully
 
     // Create a circular clipping path
@@ -64,7 +71,7 @@ async function drawProfilePicture(ctx, user, x, y, size) {
     // Draw the profile picture inside the circle
     ctx.drawImage(avatar, x - size / 2, y - size / 2, size, size); // Draw image at the center of the circle
   } catch (error) {
-    console.error('Error loading avatar:', error);
+    console.error('Error loading or drawing avatar:', error);
   }
 }
 
