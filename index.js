@@ -55,9 +55,9 @@ client.on('guildMemberAdd', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
-  const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
-  const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
+  const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
+  const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
+  const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
@@ -85,9 +85,9 @@ client.on('guildMemberRemove', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
-  const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
-  const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
+  const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
+  const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
+  const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
@@ -117,9 +117,9 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
-    const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
-    const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
+    const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
+    const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
+    const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
@@ -147,9 +147,9 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    const fontMain = '70px "Arial Black"'; // Ganti font jadi Arial Black
-    const fontSecondary = '60px "Arial Black"'; // Slightly smaller bold font
-    const fontTertiary = '50px "Arial Black"'; // Same size for tertiary text
+    const fontMain = '50px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 50px
+    const fontSecondary = '20px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 20px
+    const fontTertiary = '15px "Arial Black"'; // Ganti font jadi Arial Black, ukuran 15px
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
