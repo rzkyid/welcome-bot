@@ -63,9 +63,9 @@ client.on('guildMemberAdd', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 150);
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 220);
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 100); // Sesuaikan y posisi
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 170); // Sesuaikan y posisi
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 220); // Sesuaikan y posisi
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -93,9 +93,9 @@ client.on('guildMemberRemove', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 150);
-  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 220);
+  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 100); // Sesuaikan y posisi
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 170); // Sesuaikan y posisi
+  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 220); // Sesuaikan y posisi
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
