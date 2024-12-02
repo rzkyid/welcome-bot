@@ -47,14 +47,14 @@ function addTextWithShadow(ctx, text, font, color, x, y) {
 // Function to draw profile picture in a circle
 async function drawProfilePicture(ctx, user, x, y, size) {
   try {
-    const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+    const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
     const avatar = await loadImage(avatarURL); // Load avatar image
 
-    // Draw a circular clipping region
+    // Create a circular clipping path
     ctx.beginPath();
-    ctx.arc(x, y, size / 2, 0, Math.PI * 2);  // Draw circle at (x, y) with radius size/2
+    ctx.arc(x, y, size / 2, 0, Math.PI * 2); // Draw circle at (x, y) with radius size/2
     ctx.closePath();
-    ctx.clip();  // Clip to circle
+    ctx.clip();  // Clip the context to the circle
 
     // Draw the profile picture inside the circle
     ctx.drawImage(avatar, x - size / 2, y - size / 2, size, size); // Draw image at the center of the circle
@@ -82,7 +82,7 @@ client.on('guildMemberAdd', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Draw profile picture in the center above the text
-  await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+  await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
@@ -115,7 +115,7 @@ client.on('guildMemberRemove', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Draw profile picture in the center above the text
-  await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+  await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
 
   // Add text to canvas with shadow
   addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
@@ -150,7 +150,7 @@ client.on('messageCreate', async (message) => {
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
     // Draw profile picture in the center above the text
-    await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+    await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
@@ -183,7 +183,7 @@ client.on('messageCreate', async (message) => {
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
     // Draw profile picture in the center above the text
-    await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+    await drawProfilePicture(ctx, member.user, canvas.width / 2, 100, 100); // 100px size for profile picture
 
     // Add text to canvas with shadow
     addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
