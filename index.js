@@ -24,6 +24,23 @@ client.once('ready', () => {
   console.log('Bot is online!');
 });
 
+// Function to add text with shadow
+function addTextWithShadow(ctx, text, font, color, x, y) {
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // Set shadow properties
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+  ctx.shadowOffsetX = 4;
+  ctx.shadowOffsetY = 4;
+  ctx.shadowBlur = 6;
+
+  // Draw the text with shadow
+  ctx.fillText(text, x, y);
+}
+
 // Welcome image when a new member joins
 client.on('guildMemberAdd', async (member) => {
   const welcomeChannel = member.guild.channels.cache.get(WELCOME_CHANNEL_ID);
@@ -38,21 +55,14 @@ client.on('guildMemberAdd', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  ctx.textAlign = 'center'; // Align text to the center
-  ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+  const fontMain = '70px "Impact"'; // Bold and thick font
+  const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
+  const fontTertiary = '50px "Impact"'; // Same size for tertiary text
 
-  // Text styling for Welcome
-  ctx.font = '60px bold Arial'; // Bold and larger font
-  ctx.fillStyle = 'white';
-  ctx.fillText('Welcome!', canvas.width / 2, 60); // Centered 'Welcome' text
-
-  ctx.font = '50px bold Arial'; // Bold font
-  ctx.fillStyle = 'yellow';
-  ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
-
-  ctx.font = '40px bold Arial'; // Bold font
-  ctx.fillStyle = 'white';
-  ctx.fillText('Semoga betah disini!', canvas.width / 2, 180); // Centered "Semoga betah disini!" text
+  // Add text to canvas with shadow
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 150);
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 220);
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -75,21 +85,14 @@ client.on('guildMemberRemove', async (member) => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
   // Set text style (bold and centered)
-  ctx.textAlign = 'center'; // Align text to the center
-  ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+  const fontMain = '70px "Impact"'; // Bold and thick font
+  const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
+  const fontTertiary = '50px "Impact"'; // Same size for tertiary text
 
-  // Text styling for Goodbye
-  ctx.font = '60px bold Arial'; // Bold and larger font
-  ctx.fillStyle = 'white';
-  ctx.fillText('Goodbye!', canvas.width / 2, 60); // Centered 'Goodbye' text
-
-  ctx.font = '50px bold Arial'; // Bold font
-  ctx.fillStyle = 'yellow';
-  ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
-
-  ctx.font = '40px bold Arial'; // Bold font
-  ctx.fillStyle = 'white';
-  ctx.fillText('Semoga sukses!', canvas.width / 2, 180); // Centered "Semoga sukses!" text
+  // Add text to canvas with shadow
+  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 150);
+  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 220);
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
@@ -114,21 +117,14 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    ctx.textAlign = 'center'; // Align text to the center
-    ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+    const fontMain = '70px "Impact"'; // Bold and thick font
+    const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
+    const fontTertiary = '50px "Impact"'; // Same size for tertiary text
 
-    // Text styling for Welcome
-    ctx.font = '60px bold Arial'; // Bold and larger font
-    ctx.fillStyle = 'white';
-    ctx.fillText('Welcome!', canvas.width / 2, 60); // Centered 'Welcome' text
-
-    ctx.font = '50px bold Arial'; // Bold font
-    ctx.fillStyle = 'yellow';
-    ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
-
-    ctx.font = '40px bold Arial'; // Bold font
-    ctx.fillStyle = 'white';
-    ctx.fillText('Semoga betah disini!', canvas.width / 2, 180); // Centered "Semoga betah disini!" text
+    // Add text to canvas with shadow
+    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 80);
+    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 150);
+    addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 220);
 
     // Send the image to the channel
     message.channel.send({
@@ -151,21 +147,14 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // Set text style (bold and centered)
-    ctx.textAlign = 'center'; // Align text to the center
-    ctx.textBaseline = 'middle'; // Set baseline to middle for proper vertical centering
+    const fontMain = '70px "Impact"'; // Bold and thick font
+    const fontSecondary = '60px "Impact"'; // Slightly smaller bold font
+    const fontTertiary = '50px "Impact"'; // Same size for tertiary text
 
-    // Text styling for Goodbye
-    ctx.font = '60px bold Arial'; // Bold and larger font
-    ctx.fillStyle = 'white';
-    ctx.fillText('Goodbye!', canvas.width / 2, 60); // Centered 'Goodbye' text
-
-    ctx.font = '50px bold Arial'; // Bold font
-    ctx.fillStyle = 'yellow';
-    ctx.fillText(member.user.username, canvas.width / 2, 120); // Centered username text
-
-    ctx.font = '40px bold Arial'; // Bold font
-    ctx.fillStyle = 'white';
-    ctx.fillText('Semoga sukses!', canvas.width / 2, 180); // Centered "Semoga sukses!" text
+    // Add text to canvas with shadow
+    addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 80);
+    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 150);
+    addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 220);
 
     // Send the image to the channel
     message.channel.send({
