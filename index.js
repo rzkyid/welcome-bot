@@ -47,6 +47,7 @@ function addTextWithShadow(ctx, text, font, color, x, y) {
 // Function to draw profile picture in a circle
 async function drawProfilePicture(ctx, user, x, y, size) {
   try {
+    // Force PNG format by adding `?format=png` in URL
     const avatarURL = user.displayAvatarURL({ format: 'png', size: 128 });
     const avatar = await loadImage(avatarURL); // Load avatar image
 
