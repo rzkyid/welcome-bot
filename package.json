@@ -1,0 +1,20 @@
+{
+  "name": "bot-18-street-losvagos",
+  "version": "1.0.0",
+  "description": "bot welcome goodbye",
+  "main": "index.js",
+  "scripts": {
+    "test": "!sl"
+  },
+  "keywords": [
+    "bot",
+    "discord"
+  ],
+ "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.11.0",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.0.3"
+  }
+}
