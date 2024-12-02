@@ -4,7 +4,7 @@ const { createCanvas, loadImage, registerFont } = require('canvas');
 const express = require('express');
 
 // Daftarkan font Bebas Neue
-registerFont('path/to/BebasNeue-Regular.ttf', { family: 'Bebas Neue' });
+registerFont('./fonts/BebasNeue-Regular.ttf', { family: 'Bebas Neue' });
 
 const client = new Client({
   intents: [
