@@ -1,12 +1,12 @@
-const { Client, Intents } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 require('dotenv').config();
 
 const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MEMBERS,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMembers,
   ]
 });
 
@@ -122,14 +122,6 @@ async function sendGoodbyeImage(message) {
   const buffer = canvas.toBuffer();
 
   // Kirim pesan goodbye ke channel
-  const attachment = {
-    files: [{
-      attachment: buffer,
-      name: 'goodbye-image.png',
-    }]
-  };
-
-  // Kirim gambar goodbye ke channel
   message.channel.send({ content: `Selamat tinggal ${member}`, files: attachment.files });
 }
 
