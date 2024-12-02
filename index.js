@@ -39,19 +39,19 @@ client.on('guildMemberAdd', async (member) => {
   ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Gambar background ke canvas
 
   // Menambahkan teks "Welcome"
-  ctx.font = '40px Arial'; // Ukuran font untuk "Welcome"
-  ctx.fillStyle = '#FF6347'; // Warna teks "Welcome"
+  ctx.font = 'bold 40px "Arial Black", sans-serif'; // Font tebal
+  ctx.fillStyle = '#FFFFFF'; // Warna teks "Welcome"
   ctx.textAlign = 'center';
   ctx.fillText('Welcome', canvas.width / 2, 60);
 
   // Menambahkan teks username member
-  ctx.font = '50px Arial'; // Ukuran font untuk username
-  ctx.fillStyle = '#32CD32'; // Warna teks untuk username
+  ctx.font = 'bold 50px "Arial Black", sans-serif'; // Font tebal
+  ctx.fillStyle = '#FFD700'; // Warna teks untuk username
   ctx.fillText(member.user.username, canvas.width / 2, 120);
 
   // Menambahkan teks "Semoga betah disini!"
-  ctx.font = '30px Arial'; // Ukuran font untuk "Semoga betah disini!"
-  ctx.fillStyle = '#FFD700'; // Warna teks "Semoga betah disini!"
+  ctx.font = 'bold 30px "Arial Black", sans-serif'; // Font tebal
+  ctx.fillStyle = '#FFFFFF'; // Warna teks "Semoga betah disini!"
   ctx.fillText('Semoga betah disini!', canvas.width / 2, 180);
 
   // Mengonversi canvas menjadi buffer gambar
@@ -65,6 +65,7 @@ client.on('guildMemberAdd', async (member) => {
     }]
   };
 
+  // Mention member saat mengirim pesan
   channel.send({
     content: `${member}`, // Mention member baru
     files: attachment.files,
@@ -84,6 +85,7 @@ client.on('guildMemberRemove', (member) => {
     .setImage(goodbyeImageUrl) // Menggunakan URL dari .env
     .setFooter({ text: 'Kami akan merindukanmu!' });
 
+  // Mention member yang keluar
   channel.send({
     content: `${member}`, // Mention member yang keluar
     embeds: [goodbyeEmbed],
@@ -108,19 +110,19 @@ client.on('messageCreate', async (message) => {
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Gambar background ke canvas
 
     // Menambahkan teks "Welcome"
-    ctx.font = '40px Arial'; // Ukuran font untuk "Welcome"
-    ctx.fillStyle = '#FF6347'; // Warna teks "Welcome"
+    ctx.font = 'bold 40px "Arial Black", sans-serif'; // Font tebal
+    ctx.fillStyle = '#FFFFFF'; // Warna teks "Welcome"
     ctx.textAlign = 'center';
     ctx.fillText('Welcome', canvas.width / 2, 60);
 
     // Menambahkan teks username bot
-    ctx.font = '50px Arial'; // Ukuran font untuk username
-    ctx.fillStyle = '#32CD32'; // Warna teks untuk username
+    ctx.font = 'bold 50px "Arial Black", sans-serif'; // Font tebal
+    ctx.fillStyle = '#FFD700'; // Warna teks untuk username
     ctx.fillText(client.user.username, canvas.width / 2, 120);
 
     // Menambahkan teks "Semoga betah disini!"
-    ctx.font = '30px Arial'; // Ukuran font untuk "Semoga betah disini!"
-    ctx.fillStyle = '#FFD700'; // Warna teks "Semoga betah disini!"
+    ctx.font = 'bold 30px "Arial Black", sans-serif'; // Font tebal
+    ctx.fillStyle = '#FFFFFF'; // Warna teks "Semoga betah disini!"
     ctx.fillText('Semoga betah disini!', canvas.width / 2, 180);
 
     // Mengonversi canvas menjadi buffer gambar
