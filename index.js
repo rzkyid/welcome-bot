@@ -44,6 +44,21 @@ function addTextWithShadow(ctx, text, font, color, x, y) {
   ctx.fillText(text, x, y);
 }
 
+// Function to draw profile picture in a circle
+async function drawProfilePicture(ctx, user, x, y, size) {
+  const avatarURL = user.displayAvatarURL({ format: 'png', size: 256 });
+  const avatar = await loadImage(avatarURL);
+
+  // Draw circle
+  ctx.beginPath();
+  ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+  ctx.closePath();
+  ctx.clip(); // Crop the image to a circle
+
+  // Draw the profile picture
+  ctx.drawImage(avatar, x - size / 2, y - size / 2, size, size);
+}
+
 // Welcome image when a new member joins
 client.on('guildMemberAdd', async (member) => {
   const welcomeChannel = member.guild.channels.cache.get(WELCOME_CHANNEL_ID);
@@ -62,10 +77,13 @@ client.on('guildMemberAdd', async (member) => {
   const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
+  // Draw profile picture in the center above the text
+  await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -92,10 +110,13 @@ client.on('guildMemberRemove', async (member) => {
   const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
+  // Draw profile picture in the center above the text
+  await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
-  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
+  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
+  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
@@ -124,10 +145,13 @@ client.on('messageCreate', async (message) => {
     const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
+    // Draw profile picture in the center above the text
+    await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+
     // Add text to canvas with shadow
-    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
-    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
-    addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
+    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
+    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
+    addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
 
     // Send the image to the channel
     message.channel.send({
@@ -154,10 +178,13 @@ client.on('messageCreate', async (message) => {
     const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
+    // Draw profile picture in the center above the text
+    await drawProfilePicture(ctx, member.user, canvas.width / 2, 80, 100); // 100px size for profile picture
+
     // Add text to canvas with shadow
-    addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 140
-    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 180
-    addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 220
+    addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, 160); // Teks pertama, posisi y = 160
+    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 196); // Teks kedua, posisi y = 196
+    addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, 226); // Teks ketiga, posisi y = 226
 
     // Send the image to the channel
     message.channel.send({
