@@ -15,7 +15,7 @@ const client = new Client({
 const app = express();
 const port = process.env.PORT || 3000; // Menggunakan PORT dari .env atau 3000 sebagai default
 
-const WELCOME_IMAGE_URL = 'https://i.imgur.com/ht3HiAG.jpeg';
+const WELCOME_IMAGE_URL = 'https://i.imgur.com/13IvTa6.png'; // Gambar latar belakang baru
 const WELCOME_CHANNEL_ID = '1313095157477802034';
 const GOODBYE_CHANNEL_ID = '1313095157477802034';
 
@@ -29,8 +29,8 @@ client.on('guildMemberAdd', async (member) => {
   const welcomeChannel = member.guild.channels.cache.get(WELCOME_CHANNEL_ID);
   if (!welcomeChannel) return;
 
-  // Create welcome image
-  const canvas = createCanvas(700, 250);
+  // Create welcome image with 16:9 aspect ratio (700x393)
+  const canvas = createCanvas(700, 393);
   const ctx = canvas.getContext('2d');
 
   // Load background image
@@ -69,8 +69,8 @@ client.on('guildMemberRemove', async (member) => {
   const goodbyeChannel = member.guild.channels.cache.get(GOODBYE_CHANNEL_ID);
   if (!goodbyeChannel) return;
 
-  // Create goodbye image
-  const canvas = createCanvas(700, 250);
+  // Create goodbye image with 16:9 aspect ratio (700x393)
+  const canvas = createCanvas(700, 393);
   const ctx = canvas.getContext('2d');
 
   // Load background image
@@ -111,8 +111,8 @@ client.on('messageCreate', async (message) => {
 
     const member = message.member;
 
-    // Create welcome image
-    const canvas = createCanvas(700, 250);
+    // Create welcome image with 16:9 aspect ratio (700x393)
+    const canvas = createCanvas(700, 393);
     const ctx = canvas.getContext('2d');
 
     // Load background image
@@ -151,8 +151,8 @@ client.on('messageCreate', async (message) => {
 
     const member = message.member;
 
-    // Create goodbye image
-    const canvas = createCanvas(700, 250);
+    // Create goodbye image with 16:9 aspect ratio (700x393)
+    const canvas = createCanvas(700, 393);
     const ctx = canvas.getContext('2d');
 
     // Load background image
