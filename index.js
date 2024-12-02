@@ -63,9 +63,9 @@ client.on('guildMemberAdd', async (member) => {
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
   // Add text to canvas with shadow
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, 170); // Sesuaikan y posisi
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, 200); // Sesuaikan y posisi
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, 230); // Sesuaikan y posisi
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 1, 170); // Sesuaikan y posisi
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 1, 200); // Sesuaikan y posisi
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 1, 230); // Sesuaikan y posisi
 
   // Send the image to the welcome channel
   welcomeChannel.send({
