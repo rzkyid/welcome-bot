@@ -37,13 +37,6 @@ client.on('guildMemberAdd', async (member) => {
   const background = await loadImage(WELCOME_IMAGE_URL);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  // Load profile picture (crop to circle)
-  const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
-  ctx.beginPath();
-  ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
-  ctx.clip();
-  ctx.drawImage(avatar, 20, 20, 140, 140);
-
   // Text styling for Welcome
   ctx.font = '50px Arial';
   ctx.fillStyle = 'white';
@@ -76,13 +69,6 @@ client.on('guildMemberRemove', async (member) => {
   // Load background image
   const background = await loadImage(WELCOME_IMAGE_URL);
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-  // Load profile picture (crop to circle)
-  const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
-  ctx.beginPath();
-  ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
-  ctx.clip();
-  ctx.drawImage(avatar, 20, 20, 140, 140);
 
   // Text styling for Goodbye
   ctx.font = '50px Arial';
@@ -119,13 +105,6 @@ client.on('messageCreate', async (message) => {
     const background = await loadImage(WELCOME_IMAGE_URL);
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    // Load profile picture (crop to circle)
-    const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
-    ctx.beginPath();
-    ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
-    ctx.clip();
-    ctx.drawImage(avatar, 20, 20, 140, 140);
-
     // Text styling for Welcome
     ctx.font = '50px Arial';
     ctx.fillStyle = 'white';
@@ -158,13 +137,6 @@ client.on('messageCreate', async (message) => {
     // Load background image
     const background = await loadImage(WELCOME_IMAGE_URL);
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-    // Load profile picture (crop to circle)
-    const avatar = await loadImage(member.user.displayAvatarURL({ extension: 'png', size: 128 }));
-    ctx.beginPath();
-    ctx.arc(90, 90, 70, 0, Math.PI * 2, false);
-    ctx.clip();
-    ctx.drawImage(avatar, 20, 20, 140, 140);
 
     // Text styling for Goodbye
     ctx.font = '50px Arial';
