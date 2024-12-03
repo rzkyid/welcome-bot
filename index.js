@@ -64,7 +64,7 @@ async function drawProfilePicture(ctx, user, x, y, size) {
     ctx.clip();  // Clip the context to the circle
 
     // Draw a white outline around the profile picture
-    ctx.lineWidth = 8; // Make the outline thicker
+    ctx.lineWidth = 50; // Make the outline thicker
     ctx.strokeStyle = 'white'; // Set outline color to white
     ctx.beginPath();
     ctx.arc(x, y, size / 2 + 6, 0, Math.PI * 2); // Draw a slightly larger circle for the outline
@@ -184,7 +184,7 @@ client.on('messageCreate', async (message) => {
     // Position for profile picture (centered below the text)
     const profilePicX = canvas.width / 2;
     const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
-    const profilePicSize = 200;
+    const profilePicSize = 180;
 
     // Draw profile picture with white outline after the text
     await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
