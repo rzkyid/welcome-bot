@@ -177,7 +177,7 @@ client.on('messageCreate', async (message) => {
 
     // Add text to canvas first (so it doesn't overlap with the profile picture)
     const textYPosition = 0;  // Starting Y position for text
-    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
+    addTextWithShadow(ctx, 'Welcome', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
     addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
     addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
@@ -191,7 +191,7 @@ client.on('messageCreate', async (message) => {
 
     // Send the image to the channel
     message.channel.send({
-      content: `<@${member.id}>`,
+      content: `Welcome to 18 StReet Losvagos <@${member.id}>`,
       files: [{ attachment: canvas.toBuffer(), name: 'welcome-image.png' }],
     });
   }
