@@ -88,19 +88,19 @@ client.on('guildMemberAdd', async (member) => {
   const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
-  // Position for profile picture (centered)
+  // Add text to canvas first (so it doesn't overlap with the profile picture)
+  const textYPosition = 120;  // Starting Y position for text
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition); // Teks pertama
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 40); // Teks kedua
+  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 80); // Teks ketiga
+
+  // Position for profile picture (centered below the text)
   const profilePicX = canvas.width / 2;
-  const profilePicY = 120;  // Posisi Y diatur lebih tinggi
+  const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
   const profilePicSize = 100;
 
-  // Draw profile picture in the center above the text
+  // Draw profile picture after the text
   await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
-
-  // Add text to canvas with shadow (make sure the text is below the image)
-  const textYPosition = profilePicY + profilePicSize / 2 + 30; // Add 30px below the profile picture
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition); // Teks pertama, posisi y = textYPosition
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 40); // Teks kedua, posisi y = textYPosition + 40
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 80); // Teks ketiga, posisi y = textYPosition + 80
 
   // Send the image to the welcome channel
   welcomeChannel.send({
@@ -127,19 +127,19 @@ client.on('guildMemberRemove', async (member) => {
   const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
   const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
-  // Position for profile picture (centered)
+  // Add text to canvas first (so it doesn't overlap with the profile picture)
+  const textYPosition = 120;  // Starting Y position for text
+  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, textYPosition); // Teks pertama
+  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 40); // Teks kedua
+  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, textYPosition + 80); // Teks ketiga
+
+  // Position for profile picture (centered below the text)
   const profilePicX = canvas.width / 2;
-  const profilePicY = 120;  // Posisi Y diatur lebih tinggi
+  const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
   const profilePicSize = 100;
 
-  // Draw profile picture in the center above the text
+  // Draw profile picture after the text
   await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
-
-  // Add text to canvas with shadow (make sure the text is below the image)
-  const textYPosition = profilePicY + profilePicSize / 2 + 30; // Add 30px below the profile picture
-  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, textYPosition); // Teks pertama, posisi y = textYPosition
-  addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 40); // Teks kedua, posisi y = textYPosition + 40
-  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, textYPosition + 80); // Teks ketiga, posisi y = textYPosition + 80
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
@@ -168,19 +168,19 @@ client.on('messageCreate', async (message) => {
     const fontSecondary = '30px "Bebas Neue"'; // Font Bebas Neue, ukuran 30px
     const fontTertiary = '25px "Bebas Neue"'; // Font Bebas Neue, ukuran 25px
 
-    // Position for profile picture (centered)
+    // Add text to canvas first (so it doesn't overlap with the profile picture)
+    const textYPosition = 120;  // Starting Y position for text
+    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition); // Teks pertama
+    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 40); // Teks kedua
+    addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 80); // Teks ketiga
+
+    // Position for profile picture (centered below the text)
     const profilePicX = canvas.width / 2;
-    const profilePicY = 120;  // Posisi Y diatur lebih tinggi
+    const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
     const profilePicSize = 100;
 
-    // Draw profile picture in the center above the text
+    // Draw profile picture after the text
     await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
-
-    // Add text to canvas with shadow (make sure the text is below the image)
-    const textYPosition = profilePicY + profilePicSize / 2 + 30; // Add 30px below the profile picture
-    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition); // Teks pertama, posisi y = textYPosition
-    addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 40); // Teks kedua, posisi y = textYPosition + 40
-    addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 80); // Teks ketiga, posisi y = textYPosition + 80
 
     // Send the image to the channel
     message.channel.send({
