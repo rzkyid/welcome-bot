@@ -27,6 +27,11 @@ client.once('ready', () => {
   console.log('Bot is online!');
 });
 
+// Menambahkan endpoint agar bot bisa di-ping dari Uptime Robot
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
 // Function to add text with shadow
 function addTextWithShadow(ctx, text, font, color, x, y) {
   ctx.font = font;
