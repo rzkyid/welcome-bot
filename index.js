@@ -19,8 +19,8 @@ const app = express();
 const port = process.env.PORT || 3000; // Menggunakan PORT dari .env atau 3000 sebagai default
 
 const WELCOME_IMAGE_URL = 'https://i.imgur.com/13IvTa6.png'; // Gambar latar belakang baru
-const WELCOME_CHANNEL_ID = '1313095157477802034';
-const GOODBYE_CHANNEL_ID = '1313095157477802034';
+const WELCOME_CHANNEL_ID = '1313109618037231668';
+const GOODBYE_CHANNEL_ID = '1313109618037231668';
 
 // Bot login
 client.once('ready', () => {
@@ -64,7 +64,7 @@ async function drawProfilePicture(ctx, user, x, y, size) {
     ctx.clip();  // Clip the context to the circle
 
     // Draw a white outline around the profile picture
-    ctx.lineWidth = 50; // Make the outline thicker
+    ctx.lineWidth = 10; // Make the outline thicker
     ctx.strokeStyle = 'white'; // Set outline color to white
     ctx.beginPath();
     ctx.arc(x, y, size / 2 + 6, 0, Math.PI * 2); // Draw a slightly larger circle for the outline
@@ -97,21 +97,21 @@ client.on('guildMemberAdd', async (member) => {
 
   // Add text to canvas first (so it doesn't overlap with the profile picture)
   const textYPosition = 0;  // Starting Y position for text
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
+  addTextWithShadow(ctx, 'Welcome', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
-  addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
+  addTextWithShadow(ctx, 'I Hope You Enjoy!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
   // Position for profile picture (centered below the text)
   const profilePicX = canvas.width / 2;
   const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
-  const profilePicSize = 100;
+  const profilePicSize = 180;
 
   // Draw profile picture with white outline after the text
   await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
 
   // Send the image to the welcome channel
   welcomeChannel.send({
-    content: `<@${member.id}>`,
+    content: `Welcome to 18 StReet Losvagos <@${member.id}>`,
     files: [{ attachment: canvas.toBuffer(), name: 'welcome-image.png' }],
   });
 });
@@ -136,21 +136,21 @@ client.on('guildMemberRemove', async (member) => {
 
   // Add text to canvas first (so it doesn't overlap with the profile picture)
   const textYPosition = 0;  // Starting Y position for text
-  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
+  addTextWithShadow(ctx, 'Goodbye', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
-  addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
+  addTextWithShadow(ctx, 'See You Again!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
   // Position for profile picture (centered below the text)
   const profilePicX = canvas.width / 2;
   const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
-  const profilePicSize = 100;
+  const profilePicSize = 180;
 
   // Draw profile picture with white outline after the text
   await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
 
   // Send the image to the goodbye channel
   goodbyeChannel.send({
-    content: `<@${member.id}>`,
+    content: `Goodbye <@${member.id}>`,
     files: [{ attachment: canvas.toBuffer(), name: 'goodbye-image.png' }],
   });
 });
@@ -179,7 +179,7 @@ client.on('messageCreate', async (message) => {
     const textYPosition = 0;  // Starting Y position for text
     addTextWithShadow(ctx, 'Welcome', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
     addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
-    addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
+    addTextWithShadow(ctx, 'I Hope You Enjoy!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
     // Position for profile picture (centered below the text)
     const profilePicX = canvas.width / 2;
