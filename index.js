@@ -22,9 +22,17 @@ const WELCOME_IMAGE_URL = 'https://i.imgur.com/13IvTa6.png'; // Gambar latar bel
 const WELCOME_CHANNEL_ID = '1313109618037231668';
 const GOODBYE_CHANNEL_ID = '1313109618037231668';
 
-// Bot login
+// Heartbeat untuk memeriksa aktivitas bot
+function heartbeat() {
+    setInterval(() => {
+        console.log('\x1b[35m[ HEARTBEAT ]\x1b[0m', `Bot is alive at ${new Date().toLocaleTimeString()}`);
+    }, 30000);
+}
+
+// Bot Ready
 client.once('ready', () => {
-  console.log('Bot is online!');
+    console.log('\x1b[36m[ INFO ]\x1b[0m', `Ping: ${client.ws.ping} ms`);
+    heartbeat();
 });
 
 // Menambahkan endpoint agar bot bisa di-ping dari Uptime Robot
