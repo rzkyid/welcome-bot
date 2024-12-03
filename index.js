@@ -97,7 +97,7 @@ client.on('guildMemberAdd', async (member) => {
 
   // Add text to canvas first (so it doesn't overlap with the profile picture)
   const textYPosition = 0;  // Starting Y position for text
-  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition + 253); // Teks pertama
+  addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
   addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
@@ -136,7 +136,7 @@ client.on('guildMemberRemove', async (member) => {
 
   // Add text to canvas first (so it doesn't overlap with the profile picture)
   const textYPosition = 0;  // Starting Y position for text
-  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, textYPosition + 253); // Teks pertama
+  addTextWithShadow(ctx, 'Goodbye!', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
   addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
   addTextWithShadow(ctx, 'Semoga sukses!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
@@ -177,14 +177,14 @@ client.on('messageCreate', async (message) => {
 
     // Add text to canvas first (so it doesn't overlap with the profile picture)
     const textYPosition = 0;  // Starting Y position for text
-    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition + 253); // Teks pertama
+    addTextWithShadow(ctx, 'Welcome!', fontMain, 'white', canvas.width / 2, textYPosition + 263); // Teks pertama (ubah posisi ke 263)
     addTextWithShadow(ctx, member.user.username, fontSecondary, 'yellow', canvas.width / 2, textYPosition + 303); // Teks kedua
     addTextWithShadow(ctx, 'Semoga betah disini!', fontTertiary, 'white', canvas.width / 2, textYPosition + 333); // Teks ketiga
 
     // Position for profile picture (centered below the text)
     const profilePicX = canvas.width / 2;
     const profilePicY = textYPosition + 120;  // Position profile picture 120px below the text
-    const profilePicSize = 100;
+    const profilePicSize = 200;
 
     // Draw profile picture with white outline after the text
     await drawProfilePicture(ctx, member.user, profilePicX, profilePicY, profilePicSize); // 100px size for profile picture
