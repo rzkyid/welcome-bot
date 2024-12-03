@@ -171,8 +171,9 @@ client.on('guildMemberRemove', async (member) => {
 // Command to trigger welcome image manually
 client.on('messageCreate', async (message) => {
   if (message.content.toLowerCase() === '!slwelcome') {
-    if (!message.member.permissions.has('ADMINISTRATOR')) return;
-
+    if (!message.member.permissions.has('ADMINISTRATOR') && !message.member.roles.cache.has('1313109616841981984')) {
+      return message.reply('You do not have permission to use this command.');
+    }
     const member = message.member;
 
     // Create welcome image with 16:9 aspect ratio (700x393)
