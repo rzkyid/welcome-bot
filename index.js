@@ -124,7 +124,7 @@ client.on('guildMemberAdd', async (member) => {
 
   // Send the image to the welcome channel
   welcomeChannel.send({
-    content: `Welcome to 18 StReet Losvagos <@${member.id}>`,
+    content: `Welcome <@${member.id}>`,
     files: [{ attachment: canvas.toBuffer(), name: 'welcome-image.png' }],
   });
 });
